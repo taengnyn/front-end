@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+Прогноз погоди - React-додаток
+Цей проєкт є React-додатком, який реалізує віджет погоди з прогнозом на кілька днів. Він був розроблений на стороні клієнта з використанням JavaScript, React, AJAX та асинхронного програмування.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React-сторінка та віджет погоди на кілька днів  
 
-## Available Scripts
+Створено React-компонент WeatherWidget, який відображає прогноз погоди на 5 днів для обраного міста, також можна використовувати поточні геодані.  
+Дані отримуються з OpenWeatherMap API (/forecast ендпоінт) і відображаються у вигляді карток із датою, температурою, описом погоди, вологістю та швидкістю вітру.
 
-In the project directory, you can run:
 
-### `npm start`
+Асинхронне отримання даних через AJAX-запит  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Використовується fetch для асинхронних запитів до OpenWeatherMap API.  
+Дані повертаються у форматі JSON і обробляються для відображення у віджеті.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+Блокування інтерфейсу користувача  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Під час виконання запиту відображається лоадер.  
+Інпут для введення міста та кнопки ("Пошук" і "Моя локація") блокуються через disabled={loading}, щоб уникнути кількох одночасних запитів.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Обробка помилок комунікації із зовнішнім сервером  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Реалізовано обробку помилок через try-catch у функціях fetchWeather і fetchWeatherByCoords.  
+Обробляються помилки API (наприклад, "Місто не знайдено", "Помилка сервера") та геолокації (наприклад, "Не вдалося отримати геолокацію").  
+Помилки відображаються користувачу у вигляді тексту червоного кольору.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Додаткові вимоги:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Динамічні запити в залежності від дій користувача  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Користувач може ввести місто в інпут і натиснути кнопку "Пошук" для отримання прогнозу.  
+Також є кнопка "Моя локація", яка використовує Geolocation API для автоматичного визначення місця розташування.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Стрімінг даних (динамічне підвантаження при скролінгу)  
 
-## Learn More
+Реалізовано пагінацію через page і обробник handleScroll.  
+При скролінгу донизу контейнера автоматично підвантажується більше даних.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Використання Geolocation API  
 
-### Code Splitting
+Реалізовано функцію getLocation, яка використовує navigator.geolocation.getCurrentPosition для отримання координат користувача.  
+За координатами виконується запит до API для отримання погоди для поточного місця розташування.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+Складні компоненти React та використання Redux  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Використовується Redux для управління станом (weather, loading, error, cache).  
+Компонент WeatherWidget включає складну логіку: асинхронні запити, обробку скролінгу, кешування даних, блокування UI.  
+Використовується useCallback для оптимізації функцій та уникнення зайвих рендерів.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+Структура проєкту
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+src/App.js: Основний компонент, який рендерить віджет погоди та налаштовує Redux Provider.
+src/WeatherWidget.js: Компонент віджета погоди з усією логікою (запити, скролінг, геолокація, UI).  
+src/index.js: Точка входу додатку, рендерить App.  
+src/index.css: Стилі (за замовчуванням, якщо є).
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Необхідні бібліотеки:
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+react, react-dom
+react-redux, @reduxjs/toolkit

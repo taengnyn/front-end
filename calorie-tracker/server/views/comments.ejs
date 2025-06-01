@@ -1,0 +1,13 @@
+<h2>Коментарі</h2>
+<ul>
+  <% comments.forEach(c => { %>
+    <li><%= c %></li>
+  <% }) %>
+</ul>
+
+<form method="POST" action="/comments">
+  <input name="comment" placeholder="Ваш коментар" required />
+  <button>Додати</button>
+</form>
+
+<p><a href="/comments?page=<%= page + 1 %>">Наступна сторінка</a></p>

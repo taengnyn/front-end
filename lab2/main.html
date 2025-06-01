@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Підрахунок калорій</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="sidebar-left">
+    <h2>Активність</h2>
+    <a href="play_list.html" class="create-playlist-btn">
+      Додати відео
+      <span class="playlist-count" id="playlist-count">0</span>
+    </a>
+    <div class="video-block" id="video-block"></div>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+      <h1>Підрахунок калорій</h1>
+
+      <div class="calories-circle">
+        <div class="side-info left">
+          <strong id="consumed-calories">0</strong>
+          <span>За день</span>
+        </div>
+        
+          <svg class="progress-ring" width="160" height="160">
+            <circle class="progress-ring__background" r="70" cx="80" cy="80" />
+            <circle class="progress-ring__circle" r="70" cx="80" cy="80" />
+          </svg>
+
+        <div class="center-info">
+          <strong id="daily-goal">1500</strong>
+          <span>Денна норма</span >
+        </div>
+
+        <div class="side-info right">
+          <strong id="remaining-calories">1500</strong>
+          <span>Залишилось</span>
+        </div>
+      </div>
+      
+
+      <div class="grid">
+        <div class="card meal">
+          <div class="meal-info">
+            <h3>Сніданок</h3>
+            <p>З’їдено: <strong id="breakfast-calories">0 ккал</strong></p>
+          </div>
+          <div class="meal-image">
+            <img src="images/breakfast.png" alt="Сніданок">
+            <button class="add-btn">+</button>
+          </div>
+          <div class="meal-products" id="breakfast-products"></div>
+        </div>
+
+        <div class="card">
+          <h2>Вода</h2>
+          <div id="water-total" class="water-total">0 л</div>
+          <div class="water" id="water-container">
+            <div id="glasses-container" class="glasses-container"></div>
+            <div class="glass-add">
+              <div class="minus-icon">-</div>
+              <div class="plus-icon">+</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card meal">
+          <div class="meal-info">
+            <h3>Обід</h3>
+            <p id="calories-total" class="calories-total">Калорії: 0 ккал</p>
+          </div>
+          <div class="meal-image">
+            <img src="images/lunch.webp" alt="Обід">
+            <button class="add-btn">+</button>
+          </div>
+          <div class="meal-products" id="lunch-products"></div>
+        </div>
+
+        <div class="card">
+          <div class="meal-image meal-image--fill">
+            <img src="images/b0f473221ac145b81306d416569e4cf4.jpg" alt="Додаткове фото">
+          </div>
+          <button id="recommendations-btn" class="recommendations-btn">Рекомендації</button>
+        </div>
+
+        <div class="card meal">
+          <div class="meal-info">
+            <h3>Вечеря</h3>
+            <p>З’їдено: <strong id="dinner-calories">0 ккал</strong></p>
+          </div>
+          <div class="meal-image">
+            <img src="images/dinner.png" alt="Вечеря">
+            <button class="add-btn">+</button>
+          </div>
+          <div class="meal-products" id="dinner-products"></div>
+        </div>
+
+        <div class="card meal">
+          <div class="meal-info">
+            <h3>Перекус</h3>
+            <p>З’їдено: <strong id="snack-calories">0 ккал</strong></p>
+          </div>
+          <div class="meal-image">
+            <img src="images/snack.png" alt="Перекус">
+            <button class="add-btn">+</button>
+          </div>
+          <div class="meal-products" id="snack-products"></div>
+        </div>
+      </div>
+      <button id="logout-btn" class="logout-btn">Вийти</button>
+    </div>
+  </div>
+
+  <div class="sidebar-right">
+    <h2>Ідеї здорового харчування</h2>
+    <a href="https://topchuk.com/pravylne-harchuvannya-raczion-na-10-dniv-menyu-ta-zbalansovani-reczepty/" target="_blank">
+      <img src="images/0-3.jpg" alt="Страва 1">
+    </a>
+    <a href="https://example.com/recipe2" target="_blank">
+      <img src="images/salat-rys-tunets.webp" alt="Страва 2">
+    </a>
+    <a href="https://topchuk.com/pravylne-harchuvannya-reczepty-na-kozhen-den-dlya-zdorovogo-sposobu-zhyttya/" target="_blank">
+      <img src="images/4-4.jpg" alt="Страва 3">
+    </a>
+    <a href="https://topchuk.com/pravylne-harchuvannya-reczepty-na-kozhen-den-dlya-zdorovogo-sposobu-zhyttya/" target="_blank">
+      <img src="images/bab2881c801f640c977084dd199ad7b2.jpg" alt="Страва 3">
+    </a>
+    <a href="https://topchuk.com/pravylne-harchuvannya-reczepty-na-kozhen-den-dlya-zdorovogo-sposobu-zhyttya/" target="_blank">
+      <img src="images/058c0fcd330017d68078bcac332af5cb.jpg" alt="Страва 3">
+    </a>
+  </div>
+
+  <script src="JS/main.js"></script>
+</body>
+</html>

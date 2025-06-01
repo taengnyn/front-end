@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../images/photo_2_2025-05-31_09-46-23.jpg'); 
+  background-size: cover;         
+  background-position: center; 
+  background-repeat: no-repeat;  
+  background-attachment: fixed; 
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #4b3f72;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.nutrient-group {
+  display: flex;
+  gap: 10px;
+}
+
+.nutrient-group input {
+  flex: 1;
+}
+
+.submit-btn, .back-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #d8c8ff;
+  border: none;
+  border-radius: 5px;
+  color: #4b3f72;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover, .back-btn:hover {
+  background-color: #c0aaff;
+}
+
+.message-container {
+  min-height: 20px;
+}
+
+.message {
+  margin-top: 10px;
+  text-align: center;
+}

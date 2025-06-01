@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вхід/Реєстрація</title>
+  <link rel="stylesheet" href="styles/login_base.css">
+</head>
+<script>
+function updateSliderValue(slider) {
+  document.getElementById(slider.id + '-value').innerText = slider.value;
+}
+</script>
+<body>
+  <div class="container">
+    <div class="auth-wrapper">
+      <!-- Лівий блок: кнопка/форма для реєстрації -->
+      <div id="register-section" class="auth-section register-section">
+        <button id="register-btn" class="register-toggle-btn">Зареєструватися</button>
+        <div id="register-form" class="form-content hidden">
+          <h2>Реєстрація</h2>
+          <form id="multi-step-form">
+            <!-- Step 1: Personal Info -->
+            <div class="form-step" id="step-1">
+              <div class="input-group">
+                <label for="register-photo">Фото профілю</label>
+                <input type="file" id="register-photo" accept="image/*">
+                <div id="photo-preview" class="photo-preview"></div>
+              </div>
+              <div class="input-group">
+                <label for="register-fullname">ПІБ</label>
+                <input type="text" id="register-fullname" placeholder="Введіть ваше ПІБ" required>
+              </div>
+              <div class="input-group">
+                <label for="register-age">Вік: <span id="register-age-value">25</span></label>
+                <input type="range" id="register-age" name="age" min="10" max="100" value="25" required oninput="updateSliderValue(this)">
+              </div>
+
+              <div class="input-group">
+                <label for="register-height">Зріст (см): <span id="register-height-value">170</span></label>
+                <input type="range" id="register-height" name="height" min="100" max="220" value="170" required oninput="updateSliderValue(this)">
+              </div>
+
+              <div class="input-group">
+                <label for="register-weight">Вага (кг): <span id="register-weight-value">65</span></label>
+                <input type="range" id="register-weight" name="weight" min="30" max="150" value="65" required oninput="updateSliderValue(this)">
+              </div>
+
+              <button type="button" class="next-btn">Далі</button>
+            </div>
+
+            <!-- Step 2: Login Credentials -->
+            <div class="form-step hidden" id="step-2">
+              <div class="input-group">
+                <label for="register-login">Логін</label>
+                <input type="text" id="register-login" placeholder="Придумайте логін" required>
+              </div>
+              <div class="input-group">
+                <label for="register-password">Пароль</label>
+                <input type="password" id="register-password" placeholder="Придумайте пароль" required>
+              </div>
+              <button type="button" class="prev-btn">Назад</button>
+              <button type="button" class="next-btn">Далі</button>
+            </div>
+
+            <!-- Step 3: Activity Level and Goal -->
+            <div class="form-step hidden" id="step-3">
+              <div class="input-group">
+                <label for="register-activity">Рівень щоденної активності</label>
+                <select id="register-activity" required>
+                  <option value="" disabled selected>Оберіть рівень активності</option>
+                  <option value="low">Низький (сидячий спосіб життя)</option>
+                  <option value="moderate">Помірний (легкі тренування 1-3 рази на тиждень)</option>
+                  <option value="high">Високий (інтенсивні тренування 4-5 разів на тиждень)</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="register-goal">Ваша ціль</label>
+                <select id="register-goal" required>
+                  <option value="" disabled selected>Оберіть вашу ціль</option>
+                  <option value="lose-weight">Схуднути</option>
+                  <option value="maintain-weight">Підтримувати вагу</option>
+                  <option value="healthy-lifestyle">Вести здоровий спосіб життя</option>
+                </select>
+              </div>
+              <button type="button" class="prev-btn">Назад</button>
+              <button type="button" class="submit-btn">Підтвердити</button>
+            </div>
+
+            <div class="message-container"></div>
+          </form>
+          <button type="button" class="back-btn" onclick="toggleAuth('login')">Повернутися до входу</button>
+        </div>
+      </div>
+
+      <!-- Правий блок: форма для входу -->
+      <div id="login-section" class="auth-section login-section">
+        <button id="login-btn" class="login-toggle-btn hidden">Увійти</button>
+        <div id="login-form" class="form-content">
+          <h2>Вхід</h2>
+          <form>
+            <div class="input-group">
+              <label for="login-email">Логін</label>
+              <input type="text" id="login-email" placeholder="Введіть ваш логін" required>
+            </div>
+            <div class="input-group">
+              <label for="login-password">Пароль</label>
+              <input type="password" id="login-password" placeholder="Введіть пароль" required>
+            </div>
+            <div class="input-group">
+              <label>
+                <input type="checkbox" id="admin-login"> Увійти як адміністратор
+              </label>
+            </div>
+            <div class="message-container"></div>
+            <a href="main.html" class="submit-btn">Увійти</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="JS/login.js"></script>
+</body>
+</html>

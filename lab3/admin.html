@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Панель адміністратора</title>
+  <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Додавання страви</h2>
+    <form id="add-dish-form">
+      <div class="input-group">
+        <label for="dish-name">Назва страви</label>
+        <input type="text" id="dish-name" placeholder="Введіть назву страви" required>
+      </div>
+      <div class="input-group">
+        <label for="calories-100g">Калорійність на 100 г (ккал)</label>
+        <input type="number" id="calories-100g" placeholder="Введіть калорії" required min="0" step="0.1">
+      </div>
+      <div class="input-group">
+        <label>БЖВ на 100 г (г)</label>
+        <div class="nutrient-group">
+          <input type="number" id="protein-100g" placeholder="Білки" required min="0" step="0.1">
+          <input type="number" id="fat-100g" placeholder="Жири" required min="0" step="0.1">
+          <input type="number" id="carbs-100g" placeholder="Вуглеводи" required min="0" step="0.1">
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="portion-weight">Вага порції (г)</label>
+        <input type="number" id="portion-weight" placeholder="Введіть вагу порції" required min="1">
+      </div>
+      <div class="input-group">
+        <label>КБЖВ порції (ккал/г)</label>
+        <div class="nutrient-group">
+          <input type="number" id="calories-portion" placeholder="Калорії" required min="0" step="0.1" readonly>
+          <input type="number" id="protein-portion" placeholder="Білки" required min="0" step="0.1" readonly>
+          <input type="number" id="fat-portion" placeholder="Жири" required min="0" step="0.1" readonly>
+          <input type="number" id="carbs-portion" placeholder="Вуглеводи" required min="0" step="0.1" readonly>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Додати страву</button>
+    </form>
+    <div class="message-container"></div>
+    <a href="logging.html" class="back-btn">Вийти</a>
+  </div>
+  <script src="JS/admin.js"></script>
+</body>
+</html>
